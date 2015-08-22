@@ -26,11 +26,20 @@ been moved an renamed.
 - Compiling is more secure now and it doesn't show output unless an error occurs
     or explicitly specified.
 
+- The internal method `propegate_packages` has been spelled correctly and made
+    "internal" by adding an underscore in front of the name, resulting in
+    `_propagate_packages`
+
+- The default allignment of a multicolumn is not `c` instead of `|c|`, since
+    vertical lines in tables are ugly most of the time.
+
 ### Added
 - Lots of documentation!!!!!
 - A float environment base class.
 - An unfinished Quantity class that can be used in conjunction with the
     quantitities package. https://pythonhosted.org/quantities/
+- Allow supplying a mapper function to dumps\_list and the add\_row method for
+    tabular like objects.
 
 ## [0.8.0] - 23-05-2015
 ### Added

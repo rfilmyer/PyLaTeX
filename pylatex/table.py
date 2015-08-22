@@ -29,7 +29,7 @@ class MultiColumn(Container):
     type of data can also be list
     """
 
-    def __init__(self, size, align='|c|', data=None):
+    def __init__(self, size, align='c', data=None):
         self.size = size
         self.align = align
 
@@ -45,7 +45,6 @@ class MultiColumn(Container):
         multicolumn_type = self.__class__.__name__.lower()
         args = [self.size, self.align, dumps_list(self.data)]
         string = Command(multicolumn_type, args).dumps()
-        string += dumps_list(self)
 
         super().dumps()
 
@@ -85,7 +84,6 @@ class MultiRow(Container):
         multirow_type = self.__class__.__name__.lower()
         args = [self.size, self.width, dumps_list(self.data)]
         string = Command(multirow_type, args).dumps()
-        string += dumps_list(self)
 
         super().dumps()
 
@@ -125,7 +123,7 @@ class LongTable(TabularBase):
         super().__init__(*args, packages=[Package('longtable')], **kwargs)
 
 
-class LongTabu(Table):
+class LongTabu(TabularBase):
 
     """A class that represents a longtabu (more flexible multipage table)."""
 

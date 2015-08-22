@@ -54,7 +54,7 @@ class TabularBase(Environment):
         self.width = get_table_width(table_spec)
 
         super().__init__(data=data, options=pos,
-                         argument=table_spec, **kwargs)
+                         arguments=table_spec, **kwargs)
 
     def add_hline(self, start=None, end=None):
         """Add a horizontal line to the table.
@@ -81,7 +81,7 @@ class TabularBase(Environment):
 
         self.append((self.width - 1) * '&' + r'\\')
 
-    def add_row(self, cells, escape=False):
+    def add_row(self, cells, escape=False, mapper=None):
         """Add a row of cells to the table.
 
         :param cells:
@@ -97,7 +97,8 @@ class TabularBase(Environment):
                 for p in c.packages:
                     self.packages.add(p)
 
-        self.append(dumps_list(cells, escape=escape, token='&') + r'\\')
+        self.append(dumps_list(cells, escape=escape, token='&', mapper=mapper)
+                    + r'\\')
 
     def add_multicolumn(self, size, align, content, cells=None, escape=False):
         """Add a multicolumn of width size to the table, with cell content.
