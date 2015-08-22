@@ -21,7 +21,7 @@ class Container(LatexObject, UserList):
     of elements that can simply be accessed by using normal list functionality,
     like indexing or appending.
 
-    :param data:
+    :param data: LaTeX code or class instances
     :param packages: :class:`pylatex.package.Package` instances
 
     :type data: list
